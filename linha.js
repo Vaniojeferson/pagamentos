@@ -262,7 +262,7 @@ function descri(p){
 
     return  `<strong>Lâmina:</strong> ${p.Id}<br><br><strong>Descrição:</strong> ${p.Descrição}<br><br>
     <strong>Código:</strong> ${p.Código} <br><br> <strong>Valor sem descontos:</strong> R$ ${Number(p.Valor).toFixed(2).replace('.',',')}<br>
-    ____________________________________________________________________________`
+    __________________________________________________________`
 
 }
 
