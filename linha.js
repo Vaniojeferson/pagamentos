@@ -299,17 +299,7 @@ function pix(){
     var linha = "00020126520014BR.GOV.BCB.PIX01141080452900011102"+ lenInfor + Infor
 
     linha = linha.replace(',','.')
-    linha = linha.replace(',','.')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
+    
  
     if (lenValor > 9){
         linha = linha + "52040000530398654" + lenValor + valor
@@ -321,12 +311,7 @@ function pix(){
     }
     else{linha = linha + "5802BR5913Industria Fox6008CABREUVA620" + ID3 + "05"  + lenInfor + Infor + 6304}
     linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
-    linha = linha.replace(',','/')
+    
     
    // alert(ID3)
 
