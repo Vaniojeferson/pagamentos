@@ -7,6 +7,7 @@
     //des.innerHTML = descri(a)
     var valores = []
     var cod = []
+    var codLinha = []
     desconto = desconto
     document.addEventListener("keypress",function(e){
         if(e.key === "Enter"){
@@ -338,11 +339,11 @@ function pix(){
    var QRcode = googleAPI + linha
    document.getElementById('qr').src = QRcode + resCRC
    linPix.innerHTML = linha + resCRC
+   codLinha.push(linha + resCRC)
   
  
 }
-
-
+ 
 
 
 var crcTable = [0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5,
@@ -405,22 +406,27 @@ var crcTable = [0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5,
             crc = crcTable[j] ^ (crc << 8);
         }
     
-        return  ((crc ^ 0) & 0xFFFF);
-
-        
-    
+        return  ((crc ^ 0) & 0xFFFF); 
     }
     
+
+    document.getElementById('execCopy').addEventListener('click',execCopy)
+ async function execCopy(){
+    let text = codLinha
+    //alert(codLinha)
+    await navigator.clipboard.writeText(text)
+
+}
+
     function limpar(){
         location.reload()
     }
 
-    function copiarTexto() {
-        /*let textoCopiado = document.getElementById("pix");
-        textoCopiado.select();
-        textoCopiado.setSelectionRange(0, 99999)
-        document.COMMENT_NODE("copy");*/
-        alert("O texto é:")
-    }
+
+    
+
+
+
+
       
      
