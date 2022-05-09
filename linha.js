@@ -1,10 +1,13 @@
+    
     var p = window.document.getElementById('d')
     var des =window.document.getElementById('des')
     var lista = window.document.getElementById('total')
     var res = window.document.getElementById('res')
+    var desconto = window.document.getElementById('desconto').value
     //des.innerHTML = descri(a)
     var valores = []
     var cod = []
+    desconto = desconto
     document.addEventListener("keypress",function(e){
         if(e.key === "Enter"){
             let bress = document.getElementById('abc');
@@ -223,6 +226,7 @@
 //função para adicionar iten na lista de compras e somar total da compra
 
 function finalizar(){
+    
     var ss = p.value
     var y = Number(ss)
     var n = soma(a.find(x => x.Id== y))
@@ -234,17 +238,29 @@ function finalizar(){
     //alert(valores)
     
     var sum = 0;
-
     for (var i = 0; i < valores.length; i++) {
         sum += valores[i];
-    }     
+    }  
+     
+
+    
     total.innerHTML = `<strong>Total da compra:</strong>R$ ${sum.toFixed(2).replace(".",",")}`
     p.value = ''
     p.focus()
     
 }
 
- 
+function descontar(){
+    var desconto = window.document.getElementById('desconto').value
+    var sum = 0;
+    for (var i = 0; i < valores.length; i++) {
+        sum += valores[i];
+    }  
+     
+    sum = sum - (sum * desconto / 100)
+
+    resDesconto.innerHTML = `<strong>Total com desconto:</strong>R$ ${sum.toFixed(2).replace(".",",")}`
+}
 
 
 
@@ -261,8 +277,7 @@ function descri(p){
     
 
     return  `<strong>Lâmina:</strong> ${p.Id}<br><br><strong>Descrição:</strong> ${p.Descrição}<br><br>
-    <strong>Código:</strong> ${p.Código} <br><br> <strong>Valor sem descontos:</strong> R$ ${Number(p.Valor).toFixed(2).replace('.',',')}<br>
-    ________________________________________________`
+    <strong>Código:</strong> ${p.Código} <br><br> <strong>Valor sem descontos:</strong> R$ ${Number(p.Valor).toFixed(2).replace('.',',')}<br><p">______________________________________________</p>`
 
 }
 
