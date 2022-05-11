@@ -3,13 +3,10 @@
     var des =window.document.getElementById('des')
     var lista = window.document.getElementById('total')
     var res = window.document.getElementById('res')
-    var desconto = window.document.getElementById('desconto').value
-    //des.innerHTML = descri(a)
     var valores = []
     var cod = []
     var codLinha = []
-    desconto = desconto
-    document.addEventListener("keypress",function(e){
+    document.addEventListener("keypress",e=>{
         if(e.key === "Enter"){
             let bress = document.getElementById('abc');
             bress.click();
@@ -252,15 +249,19 @@ function finalizar(){
 }
 
 function descontar(){
+    
     var desconto = window.document.getElementById('desconto').value
     var sum = 0;
     for (var i = 0; i < valores.length; i++) {
         sum += valores[i];
-    }  
-     
-    sum = sum - (sum * desconto / 100)
+    } 
 
-    resDesconto.innerHTML = `<strong>Total com desconto:</strong>R$ ${sum.toFixed(2).replace(".",",")}`
+    sum = sum - (sum * desconto / 100)
+    if(desconto <= 0){
+        alert('Qual o valor do desconto?')
+    }else{total.innerHTML = `<strong>Total com desconto:</strong>R$ ${sum.toFixed(2).replace(".",",")}`}
+
+    
 }
 
 
@@ -287,11 +288,15 @@ function descri(p){
 
 
 function pix(){
+    var valorDes = Number(desconto.value)
     var sum = 0;
-
     for (var i = 0; i < valores.length; i++) {
         sum += valores[i];
     } 
+    
+    if(valorDes >0){
+        sum = sum - (sum * valorDes / 100)
+    }else{sum = sum}
 
     var ID2 = ''
     var valor = String(sum.toFixed(2))   
@@ -329,7 +334,6 @@ function pix(){
     linha = linha.replace(',','/')
     
     
-   // alert(ID3)
 
     
     //Gedador de Qrcode
