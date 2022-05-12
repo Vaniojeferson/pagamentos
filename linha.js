@@ -256,7 +256,7 @@ function descontar(){
     for (var i = 0; i < valores.length; i++) {
         sum += valores[i];
     } 
-    if(tipodesconto.value == "%"){
+    if(tipodesconto.value === "%"){
         sum = sum - (sum * desconto / 100)
     }else{
         sum = sum - desconto
@@ -265,7 +265,7 @@ function descontar(){
     if(desconto <= 0){
         alert('Qual o valor do desconto?')
     }else{total.innerHTML = `<strong>Total com desconto:</strong>R$ ${sum.toFixed(2).replace(".",",")}`}
-
+    var mmoral = sum
     
 }
 
@@ -299,9 +299,12 @@ function pix(){
         sum += valores[i];
     } 
     
-    if(valorDes >0){
+    if(valorDes >0 && tipodesconto.value ==="%"){
         sum = sum - (sum * valorDes / 100)
-    }else{sum = sum}
+    }
+    else if(valorDes >0 && tipodesconto.value ==="R$"){
+        sum = sum - valorDes
+    }
 
     var ID2 = ''
     var valor = String(sum.toFixed(2))   
