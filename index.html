@@ -13,13 +13,21 @@
 <body>
     
     <div id="barra">
-       <img src="imagens/logo-tudobonus-branco.svg" alt=""> <div><a href="https://loja.tudobonus.com.br/" target="_blank" style="margin-left: auto;" id="button">Ir para a loja</a></div>
+       <img src="imagens/logo-tudobonus-branco.svg" alt=""> <div><a href="https://loja.tudobonus.com.br/" target="_blank" style="margin-left: auto;" id="button">IR PRA LOJA</a></div>
        
     </div> 
            
     <div id="controll">
         <p>Código: <input type="number" id="d"> <input id="abc" type="submit" value="Buscar" onclick="finalizar()"></p>
-        <button onclick="pix()">Gerar Pagamento</button>  <button onclick="limpar()">Nova venda/Limpar</button> <p>Desconto (%)  <input type="number" id="desconto"> <button onclick="descontar()">Aplicar desconto</button></p><br><br>
+        <button onclick="pix()">Gerar Pagamento</button>  <button onclick="limpar()">Nova venda/Limpar</button> <p>
+        <p>Tipo de desconto:
+            <select id="tipodesconto">
+                <option value="%">%</option>
+                <option value="R$">R$</option>
+            </select>
+        </p>  
+        Desconto: <input type="number" id="desconto"> <button onclick="descontar()">Aplicar</button></p><br><br>
+        
     </div>
     
 
@@ -34,7 +42,7 @@
         
         <div >
             <img id="qr">
-            <div id="pix"></div> <button onclick="execCopy()">Copiar</button>
+            <div id="pix"></div> <button onclick="execCopy()">Copiar</button> 
             
             
         </div>

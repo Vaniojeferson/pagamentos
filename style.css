@@ -37,9 +37,12 @@
     padding: 3px;
     border: 1px solid black;
     color: black;
-    font-size: 12px;
+    font-size: 10px;
 }
-
+#tipodesconto{
+    width: 80px;
+    text-align: center;
+}
     
 
 

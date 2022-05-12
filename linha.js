@@ -3,6 +3,7 @@
     var des =window.document.getElementById('des')
     var lista = window.document.getElementById('total')
     var res = window.document.getElementById('res')
+    var tipodesconto = window.document.querySelector('#tipodesconto')
     var valores = []
     var cod = []
     var codLinha = []
@@ -255,8 +256,12 @@ function descontar(){
     for (var i = 0; i < valores.length; i++) {
         sum += valores[i];
     } 
-
-    sum = sum - (sum * desconto / 100)
+    if(tipodesconto.value == "%"){
+        sum = sum - (sum * desconto / 100)
+    }else{
+        sum = sum - desconto
+    }
+    
     if(desconto <= 0){
         alert('Qual o valor do desconto?')
     }else{total.innerHTML = `<strong>Total com desconto:</strong>R$ ${sum.toFixed(2).replace(".",",")}`}
