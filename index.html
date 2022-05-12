@@ -11,12 +11,13 @@
 
 
 <body>
-    <header>
-       <p ><img src="imagens/logo-tudobonus-branco.svg" alt="" style="margin-left:42% ;">  <a href="https://loja.tudobonus.com.br/" target="_blank"><button style="margin-left: 500px;" >Ir pra loja </button></p></a>
+    
+    <div id="barra">
+       <img src="imagens/logo-tudobonus-branco.svg" alt=""> <div><a href="https://loja.tudobonus.com.br/" target="_blank" style="margin-left: auto;" id="button">Ir para a loja</a></div>
        
-    </header> 
+    </div> 
            
-    <div>
+    <div id="controll">
         <p>Código: <input type="number" id="d"> <input id="abc" type="submit" value="Buscar" onclick="finalizar()"></p>
         <button onclick="pix()">Gerar Pagamento</button>  <button onclick="limpar()">Nova venda/Limpar</button> <p>Desconto (%):<input type="number" id="desconto"> <button onclick="descontar()">Aplicar desconto</button></p><br><br>
     </div>
