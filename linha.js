@@ -256,16 +256,23 @@ function descontar(){
     for (var i = 0; i < valores.length; i++) {
         sum += valores[i];
     } 
-    if(tipodesconto.value === "%"){
+    if(tipodesconto.value === "" && desconto > 0){
+        alert('Selecione do tipo de desconto')
+    }
+    else if(tipodesconto.value === "%"){
         sum = sum - (sum * desconto / 100)
-    }else{
+    }
+    else if(tipodesconto.value === "R$"){
         sum = sum - desconto
     }
     
-    if(desconto <= 0){
-        alert('Qual o valor do desconto?')
-    }else{total.innerHTML = `<strong>Total com desconto:</strong>R$ ${sum.toFixed(2).replace(".",",")}`}
-    var mmoral = sum
+    if(desconto > 0 & tipodesconto.value !==""){
+
+        total.innerHTML = `<strong>Total com desconto:</strong>R$ ${sum.toFixed(2).replace(".",",")}`
+        
+    }
+    else{alert('Qual o valor do desconto?')}
+   
     
 }
 
