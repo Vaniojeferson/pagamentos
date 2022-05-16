@@ -234,6 +234,7 @@ function finalizar(){
     valores.push(n)
     res.innerHTML+= descri(a.find(x => x.Id==y)) +`<br>`+`<br>`
 
+
     //alert(valores)
     
     var sum = 0;
@@ -241,9 +242,9 @@ function finalizar(){
         sum += valores[i];
     }  
      
-
     
     total.innerHTML = `<strong>Total da compra:</strong>R$ ${sum.toFixed(2).replace(".",",")}`
+    
     p.value = ''
     p.focus()
     
@@ -290,9 +291,9 @@ function soma(p){
 function descri(p){
     
 
-    return  `<strong>Lâmina:</strong> ${p.Id}<br><br><strong>Descrição:</strong> ${p.Descrição}<br><br>
+    return   `<strong>Lâmina:</strong> ${p.Id}<br><br><strong>Descrição:</strong> ${p.Descrição}<br><br> 
     <strong>Código:</strong> ${p.Código} <br><br> <strong>Valor sem descontos:</strong> R$ ${Number(p.Valor).toFixed(2).replace('.',',')}<br><p">______________________________________________</p>`
-
+   
 }
 
 
