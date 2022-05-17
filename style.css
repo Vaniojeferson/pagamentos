@@ -49,7 +49,17 @@
     width: 1000px;
 }
 
-
+#controll > button:hover{
+    background-color: #0092ff;
+    color: white;
+    border-radius: 5px;
+}
+.abc:hover{
+    background-color: #0092ff;
+    color: white;
+    border-radius: 5px;
+}
+    
 
 body{
     background-color:rgb(255, 255, 255);

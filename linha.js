@@ -9,7 +9,7 @@
     var codLinha = []
     document.addEventListener("keypress",e=>{
         if(e.key === "Enter"){
-            let bress = document.getElementById('abc');
+            let bress = document.querySelector('.abc');
             bress.click();
         }
     });
@@ -244,11 +244,12 @@ function finalizar(){
      
     
     total.innerHTML = `<strong>Total da compra:</strong>R$ ${sum.toFixed(2).replace(".",",")}`
-    
     p.value = ''
     p.focus()
-    
+   
 }
+
+
 
 function descontar(){
     
@@ -257,8 +258,9 @@ function descontar(){
     for (var i = 0; i < valores.length; i++) {
         sum += valores[i];
     } 
-    if(tipodesconto.value === "" && desconto > 0){
+    if(tipodesconto.value !=="%" && tipodesconto.value !=="R$"){
         alert('Selecione do tipo de desconto')
+                
     }
     else if(tipodesconto.value === "%"){
         sum = sum - (sum * desconto / 100)
@@ -301,6 +303,7 @@ function descri(p){
 
 
 function pix(){
+    
     var valorDes = Number(desconto.value)
     var sum = 0;
     for (var i = 0; i < valores.length; i++) {
@@ -353,7 +356,9 @@ function pix(){
 
     
     //Gedador de Qrcode
-
+    if(cod.length <=0){
+        alert('A lista de compras está vazia!')
+    }else{
    var googleAPI ='https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl='
    resCRC = crc16(linha).toString(16).toUpperCase()
    var QRcode = googleAPI + linha
@@ -361,7 +366,7 @@ function pix(){
    linPix.innerHTML = linha + resCRC
    codLinha.push(linha + resCRC)
   
- 
+    }
 }
  
 
