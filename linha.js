@@ -4,6 +4,7 @@
     var lista = window.document.getElementById('total')
     var res = window.document.getElementById('res')
     var tipodesconto = window.document.querySelector('#tipodesconto')
+    var desconto = []
     var valores = []
     var cod = []
     var codLinha = []
@@ -246,10 +247,55 @@ function finalizar(){
     total.innerHTML = `<strong>Total da compra:</strong>R$ ${sum.toFixed(2).replace(".",",")}`
     p.value = ''
     p.focus()
-   
+    
 }
 
+function opSoma(p){
+    
+    
+    var sum = 0;
+    for (var i = 0; i < p.length; i++) {
+         sum +=  p[i];  
+         
+    } 
+    return sum
+}
+ 
+function resumo(){
+    total.innerHTML = ''
+    res.innerHTML = ''
+    
+    let qt_intes = document.createElement("p");
+    let codigos = document.createElement("p");
+    let tot_compra = document.createElement("p");
+    let tot_c_desconto = document.createElement("p");
+    let tot_com_desconto = document.createElement("p");
 
+
+    let texto1 = document.createTextNode(cod.length);
+    let texto2 = document.createTextNode(cod);
+    let texto3 = document.createTextNode(opSoma(valores).toFixed(2).replace(".",","));
+    let texto4 = document.createTextNode((opSoma(valores)-descontar()).toFixed(2).replace(".",","));
+    let texto5 = document.createTextNode(descontar().toFixed(2).replace(".",","));
+
+    qt_intes.appendChild(texto1);
+    codigos.appendChild(texto2);
+    tot_compra.appendChild(texto3);
+    tot_c_desconto.appendChild(texto4);
+    tot_com_desconto.appendChild(texto5);
+    
+    let body = document.getElementById('resumo');
+
+    body.innerHTML = `<strong>Quant. Itens: </strong>${qt_intes.innerHTML}<br><br>
+    <strong>Código(s): </strong>${codigos.innerHTML}
+   <br> <br>
+   <strong>Valor Total: </strong>R$ ${tot_compra.innerHTML}<br><br>
+   <strong>Valor do Desconto: </strong>R$ ${tot_c_desconto.innerHTML}<br><br>
+   <strong>Valor C/Desconto: </strong>R$ ${tot_com_desconto.innerHTML}`
+     
+   
+   total.innerHTML = ''
+}
 
 function descontar(){
     
@@ -259,7 +305,7 @@ function descontar(){
         sum += valores[i];
     } 
     if(tipodesconto.value !=="%" && tipodesconto.value !=="R$"){
-        alert('Selecione do tipo de desconto')
+       // alert('Selecione do tipo de desconto')
                 
     }
     else if(tipodesconto.value === "%"){
@@ -274,9 +320,11 @@ function descontar(){
         total.innerHTML = `<strong>Total com desconto:</strong>R$ ${sum.toFixed(2).replace(".",",")}`
         
     }
-    else{alert('Qual o valor do desconto?')}
+    /*else{alert('Qual o valor do desconto?')}*/
+
+    return sum
    
-    
+   
 }
 
 
@@ -416,42 +464,35 @@ var crcTable = [0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5,
     0x2e93, 0x3eb2, 0x0ed1, 0x1ef0];
     
     
-    function crc16(str) {
-        var crc = 0xFFFF;
-        var j, i;
-    
-    
-        for (i = 0; i < str.length; i++) {
-    
-            c = str.charCodeAt(i);
-            if (c > 255) {
-                throw new RangeError();
-            }
-            j = (c ^ (crc >> 8)) & 0xFF;
-            crc = crcTable[j] ^ (crc << 8);
+function crc16(str) {
+    var crc = 0xFFFF;
+    var j, i;
+
+
+    for (i = 0; i < str.length; i++) {
+
+        c = str.charCodeAt(i);
+        if (c > 255) {
+            throw new RangeError();
         }
-    
-        return  ((crc ^ 0) & 0xFFFF); 
+        j = (c ^ (crc >> 8)) & 0xFF;
+        crc = crcTable[j] ^ (crc << 8);
     }
+
+    return  ((crc ^ 0) & 0xFFFF); 
+}
     
 
-    document.getElementById('execCopy').addEventListener('click',execCopy)
- async function execCopy(){
-    let text = codLinha
-    //alert(codLinha)
-    await navigator.clipboard.writeText(text)
+document.getElementById('execCopy').addEventListener('click',execCopy)
+async function execCopy(){
+let text = codLinha
+//alert(codLinha)
+await navigator.clipboard.writeText(text)
 
 }
 
-    function limpar(){
-        location.reload()
-    }
+function limpar(){
+    location.reload();
+}
 
-
-    
-
-
-
-
-      
-     
+   
