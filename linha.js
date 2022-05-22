@@ -264,7 +264,7 @@ function opSoma(p){
 function resumo(){
     total.innerHTML = ''
     res.innerHTML = ''
-    
+   
     let qt_intes = document.createElement("p");
     let codigos = document.createElement("p");
     let tot_compra = document.createElement("p");
@@ -274,9 +274,9 @@ function resumo(){
 
     let texto1 = document.createTextNode(cod.length);
     let texto2 = document.createTextNode(cod);
-    let texto3 = document.createTextNode(opSoma(valores).toFixed(2).replace(".",","));
-    let texto4 = document.createTextNode((opSoma(valores)-descontar()).toFixed(2).replace(".",","));
-    let texto5 = document.createTextNode(descontar().toFixed(2).replace(".",","));
+    let texto3 = document.createTextNode(opSoma(valores).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    let texto4 = document.createTextNode((opSoma(valores)-descontar()).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    let texto5 = document.createTextNode(descontar().toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
 
     qt_intes.appendChild(texto1);
     codigos.appendChild(texto2);
@@ -289,9 +289,9 @@ function resumo(){
     body.innerHTML = `<strong>Quant. Itens: </strong>${qt_intes.innerHTML}<br><br>
     <strong>Código(s): </strong>${codigos.innerHTML}
    <br> <br>
-   <strong>Valor Total: </strong>R$ ${tot_compra.innerHTML}<br><br>
-   <strong>Valor do Desconto: </strong>R$ ${tot_c_desconto.innerHTML}<br><br>
-   <strong>Valor C/Desconto: </strong>R$ ${tot_com_desconto.innerHTML}`
+   <strong>Valor Total: </strong> ${tot_compra.innerHTML}<br><br>
+   <strong>Valor do Desconto: </strong> ${tot_c_desconto.innerHTML}<br><br>
+   <strong>Valor C/Desconto: </strong> ${tot_com_desconto.innerHTML}`
      
    
    total.innerHTML = ''
@@ -317,7 +317,7 @@ function descontar(){
     
     if(desconto > 0 & tipodesconto.value !==""){
 
-        total.innerHTML = `<strong>Total com desconto:</strong>R$ ${sum.toFixed(2).replace(".",",")}`
+        total.innerHTML = `<strong>Total com desconto:</strong> ${sum.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`
         
     }
     /*else{alert('Qual o valor do desconto?')}*/
