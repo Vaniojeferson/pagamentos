@@ -244,7 +244,7 @@ function finalizar(){
     }  
      
     
-    total.innerHTML = `<strong>Total da compra:</strong>R$ ${sum.toFixed(2).replace(".",",")}`
+    total.innerHTML = `<strong>Total da compra:</strong>R$ ${sum.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`
     p.value = ''
     p.focus()
     
@@ -287,7 +287,7 @@ function resumo(){
     let body = document.getElementById('resumo');
 
     body.innerHTML = `<strong>Quant. Itens: </strong>${qt_intes.innerHTML}<br><br>
-    <strong>Código(s): </strong>${codigos.innerHTML}
+    <strong>Código(s): </strong>${codigos.innerHTML.replace(",","/").replace(",","/").replace(",","/").replace(",","/").replace(",","/")}
    <br> <br>
    <strong>Valor Total: </strong> ${tot_compra.innerHTML}<br><br>
    <strong>Valor do Desconto: </strong> ${tot_c_desconto.innerHTML}<br><br>
@@ -299,7 +299,7 @@ function resumo(){
 
 function descontar(){
     
-    var desconto = window.document.getElementById('desconto').value
+    var descontos = window.document.getElementById('desconto').value
     var sum = 0;
     for (var i = 0; i < valores.length; i++) {
         sum += valores[i];
@@ -309,13 +309,13 @@ function descontar(){
                 
     }
     else if(tipodesconto.value === "%"){
-        sum = sum - (sum * desconto / 100)
+        sum = sum - (sum * descontos / 100)
     }
     else if(tipodesconto.value === "R$"){
-        sum = sum - desconto
+        sum = sum - descontos
     }
     
-    if(desconto > 0 & tipodesconto.value !==""){
+    if(descontos > 0 & tipodesconto.value !==""){
 
         total.innerHTML = `<strong>Total com desconto:</strong> ${sum.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`
         
@@ -323,6 +323,7 @@ function descontar(){
     /*else{alert('Qual o valor do desconto?')}*/
 
     return sum
+    
    
    
 }
@@ -342,7 +343,7 @@ function descri(p){
     
 
     return   `<strong>Lâmina:</strong> ${p.Id}<br><br><strong>Descrição:</strong> ${p.Descrição}<br><br> 
-    <strong>Código:</strong> ${p.Código} <br><br> <strong>Valor sem descontos:</strong> R$ ${Number(p.Valor).toFixed(2).replace('.',',')}<br><p">______________________________________________</p>`
+    <strong>Código:</strong> ${p.Código} <br><br> <strong>Valor sem descontos:</strong>  ${Number(p.Valor).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}<br><p">______________________________________________</p>`
    
 }
 
@@ -351,22 +352,18 @@ function descri(p){
 
 
 function pix(){
-    
-    var valorDes = Number(desconto.value)
-    var sum = 0;
-    for (var i = 0; i < valores.length; i++) {
-        sum += valores[i];
-    } 
-    
-    if(valorDes >0 && tipodesconto.value ==="%"){
-        sum = sum - (sum * valorDes / 100)
+
+    var valor;
+    if(descontar()> 0){
+
+        valor = descontar().toFixed(2);
+    }else{
+        valor = opSoma(valores).toFixed(2);
     }
-    else if(valorDes >0 && tipodesconto.value ==="R$"){
-        sum = sum - valorDes
-    }
+    
 
     var ID2 = ''
-    var valor = String(sum.toFixed(2))   
+    //var valor = String(sum.toFixed(2))   
     var lenValor = valor.length
     ID2 = String(cod)
     var lenID2 = ID2.length
