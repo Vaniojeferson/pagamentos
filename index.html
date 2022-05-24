@@ -20,7 +20,11 @@
            
     <div id="controll">
         <p>Código: <input type="number" id="d"> <input class="abc" type="submit" value="Buscar" onclick="finalizar()"></p>
-        <button onclick="pix()" id="control" style="margin-right: 40px;">Gerar Pagamento</button>  <button onclick="limpar()">Nova venda/Limpar</button> <p>
+        
+        <button  onclick="pix()" id="control" style="margin-right: 40px;">Gerar Pagamento</button>
+
+        <button onclick="limpar()">Nova venda/Limpar</button> <p>
+
         <p>Tipo de desconto:
             <select id="tipodesconto" >
                 <option value="."></option>
@@ -28,14 +32,15 @@
                 <option value="R$">R$</option>
             </select>
         </p>  
-        Desconto: <input type="number" id="desconto" > <button onclick="descontar()">Aplicar</button ></p>
+        Desconto: <input type="number" id="desconto" > 
+        <button onclick="descontar()">Aplicar</button ></p>
         
     </div>
     
 
     <div id="res" ></div>
     <div id="total"></div>
-    <p onclick="resumo()" style="text-decoration: underline 1.5px blue; " ><strong>Resumir Venda</strong></p> 
+    <p class="element" onclick="resumo()" style="text-decoration: underline 1.5px rgb(0, 17, 255);" ><strong>Resumir Venda</strong></p> 
     <div id="resumo" style="text-align:center ;"></div> 
    
     <div id="resDesconto"></div>

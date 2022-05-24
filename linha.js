@@ -15,7 +15,9 @@
         }
     });
     
-    
+    document.querySelector('.element').addEventListener('mouseover',() => {
+        document.querySelector('.element').style.cursor = 'pointer';
+      });
     
     
     
@@ -331,26 +333,20 @@ function descontar(){
 
 
 //funçao pra buscar o valor do item va array
-function soma(p){
-    
-
-    return   Number(p.Valor)//.toFixed(2).replace('.',',')
-
+function soma(p){ 
+    return   Number(p.Valor)
 }
 
 //função para buscar informações dos itens na array     
 function descri(p){
     
-
     return   `<strong>Lâmina:</strong> ${p.Id}<br><br><strong>Descrição:</strong> ${p.Descrição}<br><br> 
     <strong>Código:</strong> ${p.Código} <br><br> <strong>Valor sem descontos:</strong>  ${Number(p.Valor).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}<br><p">______________________________________________</p>`
    
 }
 
 
-
-
-
+//criação da linha de pix
 function pix(){
 
     var valor;
@@ -397,8 +393,6 @@ function pix(){
     else{linha = linha + "5802BR5913Industria Fox6008CABREUVA620" + ID3 + "05"  + lenInfor + Infor + 6304}
     linha = linha.replace(',','/')
     
-    
-
     
     //Gedador de Qrcode
     if(cod.length <=0){
@@ -492,4 +486,3 @@ function limpar(){
     location.reload();
 }
 
-   
